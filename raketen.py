@@ -11,10 +11,11 @@ def angle_calc(x, y, target_coordinates):
 
     return target_angle + np.pi #För att bränslet skjuts åt motsatt håll
 
-def angle_calc2(x, y):
-    return (np.pi + 50000)
+def angle_calc2(x, y, target_coordinates):
+    target_x, target_y = target_coordinates
+    return (np.pi) / 2 + 1.67
 
-def angle_calc3(x, y):
+def angle_calc3(x, y, target_coordinates):
     return (-52.98*np.pi)/100
 
 

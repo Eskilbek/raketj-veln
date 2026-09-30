@@ -15,7 +15,7 @@ def angle_calc2(x, y, target_coordinates):
     target_x, target_y = target_coordinates
     return (np.pi) / 2 + 1.67
 
-def angle_calc3(x, y):
+def angle_calc3(x, y, target_coordinates):
     return (-52.98*np.pi)/100
 
 
@@ -29,7 +29,7 @@ def ode(t, y):
     if y < 20:
         theta = -(np.pi/2)
     else:
-        theta = angle_calc2(x, y, target_coordinates)
+        theta = angle_calc(x, y, target_coordinates)
 
     ux = 700 * np.cos(theta)
     uy = 700 * np.sin(theta)

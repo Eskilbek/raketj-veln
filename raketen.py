@@ -11,8 +11,9 @@ def angle_calc(x, y, target_coordinates):
 
     return target_angle + np.pi #För att bränslet skjuts åt motsatt håll
 
-def angle_calc2(x, y):
-    return (np.pi + 5)
+def angle_calc2(x, y, target_coordinates):
+    target_x, target_y = target_coordinates
+    return (np.pi) / 2 + 1.67
 
 
 def ode(t, y):
@@ -25,7 +26,7 @@ def ode(t, y):
     if y < 20:
         theta = -(np.pi/2)
     else:
-        theta = angle_calc(x, y)
+        theta = angle_calc2(x, y, target_coordinates)
 
     ux = 700 * np.cos(theta)
     uy = 700 * np.sin(theta)

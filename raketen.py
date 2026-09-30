@@ -28,7 +28,7 @@ def ode(t, y):
     if y < 20:
         theta = -(np.pi/2)
     else:
-        theta = angle_calc(x, y)
+        theta = angle_calc(x, y, target_coordinates)
 
     ux = 700 * np.cos(theta)
     uy = 700 * np.sin(theta)
@@ -41,7 +41,7 @@ def ode(t, y):
     return[vx, vy, ax, ay]
 
 
-tspan = (0, 40)
+tspan = (0, 10)
 
 y = [0, 0 ,0 ,0]
 

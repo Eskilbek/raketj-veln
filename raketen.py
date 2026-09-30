@@ -10,6 +10,9 @@ def angle_calc(x, y):
 def angle_calc2(x, y):
     return (np.pi)/2 + 1.67
 
+def angle_calc3(x, y):
+    return (-52.98*np.pi)/100
+
 
 def ode(t, y):
     x, y, vx, vy = y
@@ -34,7 +37,7 @@ def ode(t, y):
     return[vx, vy, ax, ay]
 
 
-tspan = (0, 20)
+tspan = (0, 40)
 
 y = [0, 0 ,0 ,0]
 

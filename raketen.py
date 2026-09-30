@@ -48,15 +48,15 @@ y = [0, 0 ,0 ,0]
 
 sol = solve_ivp(ode, tspan, y)
 
-plt.plot(sol.y[0], sol.y[1]) #x och y värden
-plt.scatter(80, 60)
-plt.xlabel("x")
-plt.ylabel("y")
-plt.grid()
-plt.show()
+#plt.plot(sol.y[0], sol.y[1]) #x och y värden
+#plt.scatter(80, 60)
+#plt.xlabel("x")
+#plt.ylabel("y")
+#plt.grid()
+#plt.show()
 
 def heuns(func, span, begin, h):
-    arr_t = []
+    arr_t= []
     arr_y = []
     arr_y.append(begin)
     y = np.array(begin, dtype=float)
@@ -78,9 +78,9 @@ def heuns(func, span, begin, h):
     return (np.array(arr_t), np.array(arr_y))
 
 
-sol_true_final_real_version_v3 = heuns(ode, tspan, y, 0.05)
+sol_true_final_real_version_v3 = heuns(ode, tspan, y, 3)
 
-plt.plot(sol_true_final_real_version_v3[0], sol_true_final_real_version_v3[1])
+plt.plot(sol_true_final_real_version_v3[1][:,0], sol_true_final_real_version_v3[1][:,1])
 plt.scatter(80, 60)
 plt.xlabel("x")
 plt.ylabel("y")

@@ -29,8 +29,7 @@ def ode(t, y):
     if y < 20:
         theta = -(np.pi/2)
     else:
-        #theta = angle_calc(x, y, target_coordinates)
-        theta = angle_calc2(x, y)
+        theta = angle_calc(x, y, target_coordinates)
 
     ux = 700 * np.cos(theta)
     uy = 700 * np.sin(theta)
@@ -40,10 +39,10 @@ def ode(t, y):
     ax = -(c/mass) * length * vx + (mass_derivative/mass) * ux
     ay = -9.82 - (c/mass) * length * vy + (mass_derivative/mass) * uy
 
-    return[vx, vy, ax, ay]
+    return np.array([vx, vy, ax, ay])
 
 
-tspan = (0, 10)
+tspan = (0, 30)
 
 y = [0, 0 ,0 ,0]
 
@@ -54,4 +53,36 @@ plt.scatter(80, 60)
 plt.xlabel("x")
 plt.ylabel("y")
 plt.grid()
+plt.show()
+
+def heuns(func, span, begin, h):
+    arr_t = []
+    arr_y = []
+    arr_y.append(begin)
+    y = np.array(begin, dtype=float)
+    t = span[0]
+
+    while(t < (span[-1])):
+        k1 = np.array(func(t, y))
+        
+        k2 = np.array(func(t + h/2, y + (h/2)* k1))
+
+        k3 = np.array(func(t + h, y + h*(-k1 + 2*k2)))
+        t = t + h
+        k_true_final_version = (k1 + 4*k2 + k3)/6
+        y_true = y + h*k_true_final_version
+        y = y_true
+        arr_y.append(y_true)
+        
+        
+    return (np.array(arr_t), np.array(arr_y))
+
+
+sol_true_final_real_version_v3 = heuns(ode, tspan, y, 0.05)
+
+plt.plot(sol_true_final_real_version_v3[0], sol_true_final_real_version_v3[1])
+plt.scatter(80, 60)
+plt.xlabel("x")
+plt.ylabel("y")
+plt.grid(True)
 plt.show()

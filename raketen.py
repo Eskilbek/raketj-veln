@@ -2,13 +2,17 @@ import numpy as np
 from scipy.integrate import solve_ivp
 import matplotlib.pyplot as plt
 
-def angle_calc(x, y):
-    target_angle = np.arctan2(60 - y, 80 - x)
+target_coordinates = (80, 60)
+
+def angle_calc(x, y, target_coordinates):
+    target_x, target_y = target_coordinates
+
+    target_angle = np.arctan2(target_y - y, target_x - x)
 
     return target_angle + np.pi #För att bränslet skjuts åt motsatt håll
 
 def angle_calc2(x, y):
-    return (np.pi)/2 + 1.67
+    return (np.pi + 5)
 
 
 def ode(t, y):
@@ -34,7 +38,7 @@ def ode(t, y):
     return[vx, vy, ax, ay]
 
 
-tspan = (0, 20)
+tspan = (0, 6)
 
 y = [0, 0 ,0 ,0]
 

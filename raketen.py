@@ -7,8 +7,8 @@ def angle_calc(x, y):
 
     return target_angle + np.pi #För att bränslet skjuts åt motsatt håll
 
-
-
+def angle_calc2(x, y):
+    return (np.pi)/2 + 1.67
 
 
 def ode(t, y):
